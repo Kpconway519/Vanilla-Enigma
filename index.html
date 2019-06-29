@@ -1,0 +1,61 @@
+<!<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Kevin's Enigma Machine</title>
+<link rel="stylesheet" href="style.css">    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+    <body>
+        <h1>Enigma Machine</h1>
+
+        <!-- Selector for the rotors -->
+        <table>
+            <tr>
+                <th>Rotor A</th>
+                <th>Rotor B</th>
+                <th>Rotor C</th>
+            </tr>
+            <tr>
+                <td>Rotor Select: <input type="number" name="" id=""> </td>
+                <td>Rotor Select: <input type="number" name="" id=""> </td>
+                <td>Rotor Select: <input type="number" name="" id=""> </td>
+            </tr>
+            <tr>
+                <td>Rotor Position: <input type="number" name="" id=""> </td>
+                <td>Rotor Position: <input type="number" name="" id=""> </td>
+                <td>Rotor Position: <input type="number" name="" id=""> </td>
+            </tr>
+        </table>
+        
+        
+        <!-- Selector for the Plugboard -->
+
+        <!-- CRUD for adding and deleting rows. -->
+        <table>
+            <tr>
+                <th>Plugboard</th>
+                <td><button>Add Plug</button></td>
+            </tr>
+            <tr id="plugboard">
+                <!-- sample to style and remove once logic is in place -->
+                <td>
+                    A <i class="fa fa-plug"></i>
+
+                    B
+                </td>
+            </tr>
+        </table>
+
+        <!-- I/O for the machine -->
+
+        <input type="text" name="" id="input">
+        <input type="text" name="" id="output">
+
+
+
+        <script src="./script.js"></script>
+    </body>
+</html>
