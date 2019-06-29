@@ -7,12 +7,16 @@
         <title>Kevin's Enigma Machine</title>
 <link rel="stylesheet" href="style.css">    
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Germania+One&display=swap" rel="stylesheet">
 </head>
     <body>
-        <h1>Enigma Machine</h1>
+        <div class="container">
+
+        
+        <h1 class="header">Kevin Conway's Enigma Machine</h1>
 
         <!-- Selector for the rotors -->
-        <table>
+        <table class="rotors">
             <tr>
                 <th>Rotor A</th>
                 <th>Rotor B</th>
@@ -34,27 +38,33 @@
         <!-- Selector for the Plugboard -->
 
         <!-- CRUD for adding and deleting rows. -->
-        <table>
+        <table class="plugboard">
             <tr>
                 <th>Plugboard</th>
                 <td><button>Add Plug</button></td>
             </tr>
-            <tr id="plugboard">
+            <tr id="plugboardRow">
                 <!-- sample to style and remove once logic is in place -->
                 <td>
-                    A <i class="fa fa-plug"></i>
-
-                    B
+                    A <i class="fa fa-plug"></i> B
                 </td>
             </tr>
         </table>
 
         <!-- I/O for the machine -->
 
-        <input type="text" name="" id="input">
-        <input type="text" name="" id="output">
+        <div class="inputOutput">
+            <div class="input">
+                <p>Input</p>
+               <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="output">
+                <p>Output</p>
+               <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+        </div>
 
-
+    </div>
 
         <script src="./script.js"></script>
     </body>
