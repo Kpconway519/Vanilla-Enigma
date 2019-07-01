@@ -41,13 +41,12 @@
         <table class="plugboard">
             <tr>
                 <th>Plugboard</th>
-                <td><button>Add Plug</button></td>
+                <td><button onclick="addPlug()">Add Plug</button></td>
+                <select name="plugOne" id="plugOne"></select>
+                <select name="plugTwo" id="plugTwo"></select>
             </tr>
             <tr id="plugboardRow">
                 <!-- sample to style and remove once logic is in place -->
-                <td>
-                    A <i class="fa fa-plug"></i> B
-                </td>
             </tr>
         </table>
 
@@ -56,11 +55,11 @@
         <div class="inputOutput">
             <div class="input">
                 <p>Input</p>
-               <textarea name="" id="" cols="30" rows="10"></textarea>
+               <textarea name="" id="" cols="30" rows="10" oninput="input(event)"></textarea>
             </div>
             <div class="output">
                 <p>Output</p>
-               <textarea name="" id="" cols="30" rows="10"></textarea>
+               <textarea name="" id="output" cols="30" rows="10"></textarea>
             </div>
         </div>
 
