@@ -7,16 +7,18 @@ let plugTwo = document.getElementById('plugTwo');
 let plugboardRow = document.getElementById('plugboardRow');
 // console.log(outputBox.value)
 
+// Wiring Scrambles. Index 1 corresponds with "A" and so on.
+
+let outsideRingDefault = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+let rotorWiring1 = 'EKMFLGDQVZNTOWYHXUSPAIBRCJ'.split('');
+let rotorWiring2 = 'AJDKSIRUXBLHWTMCQGZNPYFVOE'.split('');
+let rotorWiring3 = 'BDFHJLCPRTXVZNYEIWGAKMUSQO'.split('');
+let rotorWiring4 = 'ESOVPZJAYQUIRHXLNFTGKDCMWB'.split('');
+let rotorWiring5 = 'VZBRGITYUPSDNHLXAWMJQOFECK'.split('');
+
+
 let plugboard = {
 }
-
-
-
-
-
-
-
-
 
 
 // each rotor, when selected, will take instantiate the class Rotor for that particular one.
@@ -28,38 +30,45 @@ class Rotor {
         this.ringSetting = ringSetting;
         this.position = position;
         this.turnoverPoint = turnover;
+        this.outsideRing = outsideRingDefault;
     }
 
-    turnover() {
-        //turn this rotor over by one notch. Behavior will be different with the fast rotor, which turns over every time.
+    turnover(increment, array) {
 
         //this function will advance this.position by 1;
         alert('works')
+
+        //   array rotation function:   
+            for (let i = 0; i < increment; i++){
+                let lastLetter = array[array.length - 1]
+                array.pop()
+                array.unshift(lastLetter);
+                // console.log('works')
+            }
+            return array
     }
 
 
+    process(letter) {
+        //this is the main function which takes in the original letter and returns the outputLetter.
+    
+        //"A" comes in
+        // you have to know the ringSetting offset and that will give you the translation for "A"
+            //position is let position = outsideRing.indexOf(letter)
+        // the translated "A" is now transLetter1 **This is the index in the wiring array**
+            // let transLetter1 = this.rotorWiring[position]
+        // transLetter 1 becomes transLetter2 **This is the letter of the wiring array**
+        // transLetter 2 becomes the outputLetter **This is determined by position. How?**
+
+        // return outputLetter;
+    }
 }
 
-// Wiring Scrambles. Turned into arrays below for easy iteration. Index 1 corresponds with "A" and so on.
-
-let rotAlph1 = 'EKMFLGDQVZNTOWYHXUSPAIBRCJ';
-let rotAlph2 = 'AJDKSIRUXBLHWTMCQGZNPYFVOE';
-let rotAlph3 = 'BDFHJLCPRTXVZNYEIWGAKMUSQO';
-let rotAlph4 = 'ESOVPZJAYQUIRHXLNFTGKDCMWB';
-let rotAlph5 = 'VZBRGITYUPSDNHLXAWMJQOFECK';
 
 
+//these are passed into a new instance of a Rotor class as "let rotor1 = new Rotor(rotorWiring1, *stuff*)"
 
-let rotorWiring1 = rotAlph1.split('');
-let rotorWiring2 = rotAlph2.split('');
-let rotorWiring3 = rotAlph3.split('');
-let rotorWiring4 = rotAlph4.split('');
-let rotorWiring5 = rotAlph5.split('');
-
-
-
-
-
+let debugRotor = new Rotor(rotorWiring1, 1, 1, "N")
 
 
 
