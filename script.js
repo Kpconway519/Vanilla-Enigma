@@ -8,8 +8,7 @@ let plugboardRow = document.getElementById('plugboardRow');
 // console.log(outputBox.value)
 
 // Wiring Scrambles. Index 1 corresponds with "A" and so on.
-
-let outsideRingDefault = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+let defaultAlphabetArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 let rotorWiring1 = 'EKMFLGDQVZNTOWYHXUSPAIBRCJ'.split('');
 let rotorWiring2 = 'AJDKSIRUXBLHWTMCQGZNPYFVOE'.split('');
 let rotorWiring3 = 'BDFHJLCPRTXVZNYEIWGAKMUSQO'.split('');
@@ -24,43 +23,61 @@ let plugboard = {
 // each rotor, when selected, will take instantiate the class Rotor for that particular one.
 
 class Rotor {
-    constructor(wiring, ringSetting, position, turnover) {
+    constructor(initialWiring, initialRingSetting, initialPosition, initialTurnover) {
         //you need to know the wiring (AKA which rotor it is), the ringSetting, and the initial position to start
-        this.rotorWiring = wiring;
-        this.ringSetting = ringSetting;
-        this.position = position;
-        this.turnoverPoint = turnover;
-        this.outsideRing = outsideRingDefault;
+        this.rotorWiring = initialWiring;
+        this.ringSetting = initialRingSetting;
+        this.position = initialPosition;
+        this.turnoverPoint = initialTurnover;
+        this.outsideRing = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     }
 
     turnover(increment, array) {
 
-        //this function will advance this.position by 1;
-        alert('works')
+        if (increment == 0) {
+            return array
+        } else {
 
-        //   array rotation function:   
+            //   array rotation function:   
             for (let i = 0; i < increment; i++){
                 let lastLetter = array[0]
                 array.shift()
                 array.push(lastLetter);
-                // console.log('works')
             }
             return array
+        }
     }
 
 
     process(letter) {
         //this is the main function which takes in the original letter and returns the outputLetter.
-    
-        //"A" comes in
-        // you have to know the ringSetting offset and that will give you the translation for "A"
-            //position is let position = outsideRing.indexOf(letter)
-        // the translated "A" is now transLetter1 **This is the index in the wiring array**
-            // let transLetter1 = this.rotorWiring[position]
-        // transLetter 1 becomes transLetter2 **This is the letter of the wiring array**
-        // transLetter 2 becomes the outputLetter **This is determined by position. How?**
+        
+        //set up the rotor first
+        if (this.isFastRotor === true) {
+            this.turnover(1, this.outsideRing)
+        } else {
+            //turnover at the appropriate point
+            
+        }
+        // this.turnover(this.ringSetting, this.rotorWiring)
+        console.log("Window Letter: " + this.outsideRing[0])
+        //"A" comes in, the wheel advances first. this.outsideRing[0] is always the letter in the window
+        let firstTrans = this.outsideRing[defaultAlphabetArray.indexOf(letter)]
+        console.log('First Trans: ' + firstTrans)
+        // console.log(defaultAlphabetArray.indexOf(letter))
+        // console.log(this.outsideRing[0])
+        // console.log(this.position)
 
-        // return outputLetter;
+        let secondTrans = this.rotorWiring[defaultAlphabetArray.indexOf(firstTrans)]
+        console.log("Second Trans: " + secondTrans)
+
+        if (this.ringSetting === 0) {
+            return secondTrans
+        } else {
+            let letterIndex = defaultAlphabetArray.indexOf(secondTrans)
+            return defaultAlphabetArray[letterIndex + this.ringSetting]
+        }
+
     }
 }
 
@@ -68,7 +85,8 @@ class Rotor {
 
 //these are passed into a new instance of a Rotor class as "let rotor1 = new Rotor(rotorWiring1, *stuff*)"
 
-let debugRotor = new Rotor(rotorWiring1, 1, 1, "N")
+// wiring, ring, position, turnover point
+let debugRotor = new Rotor(rotorWiring1, 1, 20, "N")
 
 
 
