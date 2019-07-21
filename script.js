@@ -40,9 +40,9 @@ class Rotor {
 
         //   array rotation function:   
             for (let i = 0; i < increment; i++){
-                let lastLetter = array[array.length - 1]
-                array.pop()
-                array.unshift(lastLetter);
+                let lastLetter = array[0]
+                array.shift()
+                array.push(lastLetter);
                 // console.log('works')
             }
             return array
