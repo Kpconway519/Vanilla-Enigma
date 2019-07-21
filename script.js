@@ -10,94 +10,77 @@ let plugboardRow = document.getElementById('plugboardRow');
 let plugboard = {
 }
 
-let rotors = {
 
-    rotor1: [
-        ["E", "A"],
-        ["K", "B"],
-        ["M", "C"],
-        ["F", "D"],
-        ["L", "E"],
-        ["G", "F"],
-        ["D", "G"],
-        ["Q", "H"],
-        ["V", "I"],
-        ["Z", "J"],
-        ["N", "K"],
-        ["T", "L"],
-        ["O", "M"],
-        ["W", "N"],
-        ["Y", "O"],
-        ["H", "P"],
-        ["X", "Q"],
-        ["U", "R"],
-        ["S", "S"],
-        ["P", "T"],
-        ["A", "U"],
-        ["I", "V"],
-        ["B", "W"],
-        ["R", "X"],
-        ["C", "Y"],
-        ["J", "Z"]
-    ],
-    rotor2: [
-        ["A", "A"],
-        ["J", "B"],
-        ["D", "C"],
-        ["K", "D"],
-        ["S", "E"],
-        ["I", "F"],
-        ["R", "G"],
-        ["U", "H"],
-        ["X", "I"],
-        ["B", "J"],
-        ["L", "K"],
-        ["H", "L"],
-        ["W", "M"],
-        ["T", "N"],
-        ["M", "O"],
-        ["C", "P"],
-        ["Q", "Q"],
-        ["G", "R"],
-        ["Z", "S"],
-        ["N", "T"],
-        ["P", "U"],
-        ["Y", "V"],
-        ["F", "W"],
-        ["V", "X"],
-        ["O", "Y"],
-        ["E", "Z"]
-    ],
-    rotor3: [
-        ["B", "A"],
-        ["D", "B"],
-        ["F", "C"],
-        ["H", "D"],
-        ["J", "E"],
-        ["L", "F"],
-        ["C", "G"],
-        ["P", "H"],
-        ["R", "I"],
-        ["T", "J"],
-        ["X", "K"],
-        ["V", "L"],
-        ["Z", "M"],
-        ["N", "N"],
-        ["Y", "O"],
-        ["E", "P"],
-        ["I", "Q"],
-        ["W", "R"],
-        ["G", "S"],
-        ["A", "T"],
-        ["K", "U"],
-        ["M", "V"],
-        ["U", "W"],
-        ["S", "X"],
-        ["Q", "Y"],
-        ["O", "Z"]
-    ]
+
+
+
+
+
+
+
+
+// each rotor, when selected, will take instantiate the class Rotor for that particular one.
+
+class Rotor {
+    constructor(wiring, ringSetting, position, turnover) {
+        //you need to know the wiring (AKA which rotor it is), the ringSetting, and the initial position to start
+        this.rotorWiring = wiring;
+        this.ringSetting = ringSetting;
+        this.position = position;
+        this.turnoverPoint = turnover;
+    }
+
+    turnover() {
+        //turn this rotor over by one notch. Behavior will be different with the fast rotor, which turns over every time.
+
+        //this function will advance this.position by 1;
+        alert('works')
+    }
+
+
 }
-    
+
+// Wiring Scrambles. Turned into arrays below for easy iteration. Index 1 corresponds with "A" and so on.
+
+let rotAlph1 = 'EKMFLGDQVZNTOWYHXUSPAIBRCJ';
+let rotAlph2 = 'AJDKSIRUXBLHWTMCQGZNPYFVOE';
+let rotAlph3 = 'BDFHJLCPRTXVZNYEIWGAKMUSQO';
+let rotAlph4 = 'ESOVPZJAYQUIRHXLNFTGKDCMWB';
+let rotAlph5 = 'VZBRGITYUPSDNHLXAWMJQOFECK';
+
+
+
+let rotorWiring1 = rotAlph1.split('');
+let rotorWiring2 = rotAlph2.split('');
+let rotorWiring3 = rotAlph3.split('');
+let rotorWiring4 = rotAlph4.split('');
+let rotorWiring5 = rotAlph5.split('');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let plugboardAlphabet = [
     'A',
     'B',
