@@ -1,0 +1,135 @@
+Rotors
+
+Looks like the hardest part.
+
+When a key is pressed, the fast rotor advances one position first, and if any of the other rotors have the notch exposed, they advance as well.
+
+It seems like both the internal wiring, as well as the position of the letters both matter. I'll assume that, for one individual rotor, each side has the whole alphabet, with the scrambled wiring in the middle. 
+
+The main problem I'm having trouble with right now is the gap between the rotors. That gap, and the wheel position, seem to matter more than the "letter" itself, as it really is just a pathway for electric current.
+
+
+Step-by-step through the rotors:
+
+1. "A" is typed in
+2. "A" goes to the plugboard and is transformed into "X" for ex.
+3. "X" goes to the static wheel at the right of the rotors and comes out "X"
+4. If the right wheel has "A" at the top (default), the "X" comes in as an "X" from the static wheel
+    a. This "X" is then changed into a 
+
+
+
+
+
+
+
+
+
+Rotor:
+
+The rotor has a "Ringstellung" or ring-setting which you set first before you put it in the machine. This scrambles the internal wiring relative to the outside contacts of the ring and changes the normal output. You can tell the setting by a little dot on the spring-loaded lever, but I don't think this is visible with the lid closed normally. 
+
+The position setting of the wheel is changed by the big finger wheel with teeth on it. This changes the rotation of the outside of the wheel, but not the inside. The inside of the wheel doesn't change during normal operation. 
+
+The outside of the wheel can be an array. The inside needs to be a different array. The index of the array can correspond with the normal alphabet, with no extra complexity. 
+
+How will I handle the changes?
+
+
+
+Rotor turnover positions:
+
+
+
+
+Reflector:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
