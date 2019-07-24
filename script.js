@@ -4,6 +4,12 @@ let outputBox = document.getElementById('output');
 let inputBox = document.getElementById('input');
 let plugOne = document.getElementById('plugOne');
 let plugTwo = document.getElementById('plugTwo');
+let rotorOne = document.getElementById('rotorOne');
+let rotorTwo = document.getElementById('rotorTwo');
+let rotorThree = document.getElementById('rotorThree');
+let rotorOnePosition = document.getElementById('rotorOnePosition');
+let rotorTwoPosition = document.getElementById('rotorTwoPosition');
+let rotorThreePosition = document.getElementById('rotorThreePosition');
 let plugboardRow = document.getElementById('plugboardRow');
 // console.log(outputBox.value)
 
@@ -97,21 +103,22 @@ class Rotor {
 
 //these are passed into a new instance of a Rotor class as "let rotor1 = new Rotor(rotorWiring1, *stuff*)"
 
-// wiring, ring, position, turnover point
-let debugRotor = new Rotor(rotorWiring1, 0, "Q", 1)
+// wiring, position, turnover point, rotor order
+let debugRotor1 = new Rotor(rotorWiring1, 0, "Q", 1)
+let debugRotor2 = new Rotor(rotorWiring2, 0, "Q", 1)
+let debugRotor3 = new Rotor(rotorWiring3, 0, "Q", 1)
 
+let rotorConstructor = () => {
 
+}
 
+let forwardRotors = (letter) => {
 
+}
 
+let backwardRotors = (letter) => {
 
-
-
-
-
-
-
-
+}
 
 
 
@@ -149,6 +156,9 @@ let plugboardAlphabet = [
     'Z',
 ]
 
+let rotorSelect = "I II III IV V".split(' ')
+let rotorPosition = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('')
+
 // as each plugboard pair is added, it goes into the plugboard object as 2 key value pairs so it can be found by a later function from either "end". 
 
 let fillPlugboardDropdowns = (array) => {
@@ -158,8 +168,32 @@ let fillPlugboardDropdowns = (array) => {
     array.forEach((letter) => plugTwo.innerHTML += `<option>${letter}</option>`)
 }
 
+let fillRotorDropdowns = (array) => {
+
+        // this one doesn't work for some reason
+
+    rotorOne.innerHTML = '';
+    rotorTwo.innerHTML = '';
+    rotorThree.innerHTML = '';
+    array.forEach((rotor) => rotorOne.innerHTML += `<option>${rotor}</option>`)
+    array.forEach((rotor) => rotorTwo.innerHTML += `<option>${rotor}</option>`)
+    array.forEach((rotor) => rotorThree.innerHTML += `<option>${rotor}</option>`)
+}
+let fillRotorPositionDropdowns = (array) => {
+    rotorOne.innerHTML = '';
+    rotorTwo.innerHTML = '';
+    rotorThree.innerHTML = '';
+    array.forEach((rotor) => rotorOnePosition.innerHTML += `<option>${rotor}</option>`)
+    array.forEach((rotor) => rotorTwoPosition.innerHTML += `<option>${rotor}</option>`)
+    array.forEach((rotor) => rotorThreePosition.innerHTML += `<option>${rotor}</option>`)
+}
+
 // fillPlugboardDropdowns(plugboardAlphabet)
-window.onload = fillPlugboardDropdowns(plugboardAlphabet)
+window.onload = function() {
+    fillPlugboardDropdowns(plugboardAlphabet)
+    fillRotorDropdowns(rotorSelect)
+    fillRotorPositionDropdowns(rotorPosition)
+}
 
 let addPlug = () => {
 
