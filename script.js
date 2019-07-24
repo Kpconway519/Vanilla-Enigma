@@ -9,11 +9,13 @@ let plugboardRow = document.getElementById('plugboardRow');
 
 // Wiring Scrambles. Index 1 corresponds with "A" and so on.
 let defaultAlphabetArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-let rotorWiring1 = 'EKMFLGDQVZNTOWYHXUSPAIBRCJ'.split('');
-let rotorWiring2 = 'AJDKSIRUXBLHWTMCQGZNPYFVOE'.split('');
-let rotorWiring3 = 'BDFHJLCPRTXVZNYEIWGAKMUSQO'.split('');
-let rotorWiring4 = 'ESOVPZJAYQUIRHXLNFTGKDCMWB'.split('');
-let rotorWiring5 = 'VZBRGITYUPSDNHLXAWMJQOFECK'.split('');
+let rotorWiring1 = 'EKMFLGDQVZNTOWYHXUSPAIBRCJ'.split(''); // Q to R turnover next
+let rotorWiring2 = 'AJDKSIRUXBLHWTMCQGZNPYFVOE'.split(''); // E to F turnover next
+let rotorWiring3 = 'BDFHJLCPRTXVZNYEIWGAKMUSQO'.split(''); // V to W turnover next
+let rotorWiring4 = 'ESOVPZJAYQUIRHXLNFTGKDCMWB'.split(''); // J to K turnover next
+let rotorWiring5 = 'VZBRGITYUPSDNHLXAWMJQOFECK'.split(''); // Z to A turnover next
+
+let turnoverNextRotor = false;
 
 
 let plugboard = {
@@ -23,13 +25,13 @@ let plugboard = {
 // each rotor, when selected, will take instantiate the class Rotor for that particular one.
 
 class Rotor {
-    constructor(initialWiring, initialRingSetting, initialPosition, initialTurnover) {
+    constructor(initialWiring, initialPosition, initialTurnover, rotorOrder) {
         //you need to know the wiring (AKA which rotor it is), the ringSetting, and the initial position to start
         this.rotorWiring = initialWiring;
-        this.ringSetting = initialRingSetting;
         this.position = initialPosition;
         this.turnoverPoint = initialTurnover;
         this.outsideRing = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        this.rotorOrder = rotorOrder;
     }
 
     turnover(increment, array) {
@@ -51,13 +53,27 @@ class Rotor {
 
     process(letter) {
         //this is the main function which takes in the original letter and returns the outputLetter.
-        
-        //set up the rotor first
-        if (this.isFastRotor === true) {
+
+            // determine turnover for the next rotor
+                // if (this.rotorWiring === )
+        console.log('turnover is ' + this.turnoverPoint)
+
+                // if the turnover point is the same as the window letter, the turnover function will advance the wheel right after that, and in that case, the turnoverNextRotor should be set to true
+            if (this.turnoverPoint === this.outsideRing[0]) {
+                turnoverNextRotor = true;
+            }
+
+
+            // turnover the rotor if appropriate
+
+        if (this.rotorOrder === 1) {
+            this.turnover(1, this.outsideRing)
+        } else if (this.rotorOrder === 2 && turnoverNextRotor === true) {
+            this.turnover(1, this.outsideRing)
+        } else if (this.rotorOrder === 3 && turnoverNextRotor === true) {
             this.turnover(1, this.outsideRing)
         } else {
-            //turnover at the appropriate point
-            
+            console.log('Error: Rotor Order may not be selected')
         }
         // this.turnover(this.ringSetting, this.rotorWiring)
         console.log("Window Letter: " + this.outsideRing[0])
@@ -67,16 +83,12 @@ class Rotor {
         // console.log(defaultAlphabetArray.indexOf(letter))
         // console.log(this.outsideRing[0])
         // console.log(this.position)
-
+        
+        // this returns the letter position correctly, despite the actual letter in the internal wiring
         let secondTrans = this.rotorWiring[defaultAlphabetArray.indexOf(firstTrans)]
         console.log("Second Trans: " + secondTrans)
 
-        if (this.ringSetting === 0) {
             return secondTrans
-        } else {
-            let letterIndex = defaultAlphabetArray.indexOf(secondTrans)
-            return defaultAlphabetArray[letterIndex + this.ringSetting]
-        }
 
     }
 }
@@ -86,7 +98,7 @@ class Rotor {
 //these are passed into a new instance of a Rotor class as "let rotor1 = new Rotor(rotorWiring1, *stuff*)"
 
 // wiring, ring, position, turnover point
-let debugRotor = new Rotor(rotorWiring1, 1, 20, "N")
+let debugRotor = new Rotor(rotorWiring1, 0, "Q", 1)
 
 
 
