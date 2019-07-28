@@ -1,12 +1,16 @@
+
+let resultLetter = '';
 let result = '';
 let output = '';
 let outputBox = document.getElementById('output');
 let inputBox = document.getElementById('input');
 let plugOne = document.getElementById('plugOne');
 let plugTwo = document.getElementById('plugTwo');
+
 let rotorOne = document.getElementById('rotorOne');
 let rotorTwo = document.getElementById('rotorTwo');
 let rotorThree = document.getElementById('rotorThree');
+
 let rotorOnePosition = document.getElementById('rotorOnePosition');
 let rotorTwoPosition = document.getElementById('rotorTwoPosition');
 let rotorThreePosition = document.getElementById('rotorThreePosition');
@@ -156,7 +160,7 @@ let plugboardAlphabet = [
     'Z',
 ]
 
-let rotorSelect = "I II III IV V".split(' ')
+// let rotorSelect = "I II III IV V".split(' ')
 let rotorPosition = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('')
 
 // as each plugboard pair is added, it goes into the plugboard object as 2 key value pairs so it can be found by a later function from either "end". 
@@ -168,17 +172,29 @@ let fillPlugboardDropdowns = (array) => {
     array.forEach((letter) => plugTwo.innerHTML += `<option>${letter}</option>`)
 }
 
-let fillRotorDropdowns = (array) => {
-
-        // this one doesn't work for some reason
-
-    rotorOne.innerHTML = '';
-    rotorTwo.innerHTML = '';
-    rotorThree.innerHTML = '';
-    array.forEach((rotor) => rotorOne.innerHTML += `<option>${rotor}</option>`)
-    array.forEach((rotor) => rotorTwo.innerHTML += `<option>${rotor}</option>`)
-    array.forEach((rotor) => rotorThree.innerHTML += `<option>${rotor}</option>`)
+let fillRotorDropdowns = (array, rotor) => {
+    rotor.innerHTML = '';
+    array.forEach((rotorSetting) => rotor.innerHTML += `<option>${rotorSetting}</option>`);
 }
+
+    // fill rotor function. checks for if has been selected. if not, fill. default I, II, III
+
+let fillRotor = () => {
+    let rotorSelect = "I II III IV V".split(' ');
+
+    // Fill the rotor dropdowns with default setting
+    rotorSelect.splice(/* rotorSelect[i], rotorSelect[i] */);
+    
+    fillRotorDropdowns(rotorSelect, rotorOne);
+    fillRotorDropdowns(rotorSelect, rotorTwo);
+    fillRotorDropdowns(rotorSelect, rotorThree);
+
+    rotorOne.value = 'I';
+    rotorTwo.value = 'II';
+    rotorThree.value = 'III';
+
+}
+
 let fillRotorPositionDropdowns = (array) => {
     rotorOne.innerHTML = '';
     rotorTwo.innerHTML = '';
@@ -188,11 +204,38 @@ let fillRotorPositionDropdowns = (array) => {
     array.forEach((rotor) => rotorThreePosition.innerHTML += `<option>${rotor}</option>`)
 }
 
+let selectRotors = () => {
+
+    rotorOne.value
+    rotorTwo.value
+    rotorThree.value
+
+    // wiring, position, turnover, 
+    let rotor1 = new Rotor(/*rotor wiring */, rotorPosition.indexOf(rotorOnePosition.value), /* rotor turnover position */, 1)
+    let rotor2 = new Rotor(/*rotor wiring */, rotorPosition.indexOf(rotorTwoPosition.value), /* rotor turnover position */, 2)
+    let rotor3 = new Rotor(/*rotor wiring */, rotorPosition.indexOf(rotorThreePosition.value), /* rotor turnover position */, 3)
+
+    if (rotorOne.value === 'I'){
+        console.log('works')
+        let rotor1 = new Rotor(rotorWiring1, 0, "Q", 1)    
+    } else if (rotorOne.value === 'II') {
+
+    } else if (rotorOne.value === 'III') {
+
+    } else if (rotorOne.value === 'IV') {
+
+    } else if (rotorOne.value === 'V') {
+
+    }
+}
+
+
 // fillPlugboardDropdowns(plugboardAlphabet)
 window.onload = function() {
     fillPlugboardDropdowns(plugboardAlphabet)
-    fillRotorDropdowns(rotorSelect)
     fillRotorPositionDropdowns(rotorPosition)
+    // fillRotorDropdowns(rotorSelect)
+    fillRotor();
 }
 
 let addPlug = () => {
@@ -221,27 +264,20 @@ let addPlug = () => {
 }
 
 
-
-
-
-
-
-
-
-
-
 let input = async (e) => {
     
     // capture the keypress
 let inputKey = e.data.toUpperCase();
 // console.log(inputKey)
 // plugboard 
-console.log(plugboard[inputKey])
+// console.log(plugboard[inputKey])
 if(plugboard[inputKey]) {
-   result += plugboard[inputKey]
+//    result += plugboard[inputKey]
+   resultLetter = plugboard[inputKey]
 } else {
-    result += inputKey;
+    resultLetter = inputKey;
 }
+console.log(resultLetter)
 
 // rotors and positions--goes through one time, then back through.
 
@@ -252,13 +288,14 @@ if(plugboard[inputKey]) {
 
 
 //this is the output.
-return outputBox.value = result;
+// return outputBox.value = result;
 }
 
 
 
 
 
+console.log(rotorPosition[rotorPosition.indexOf(rotorOnePosition.value)])
 
 
 
